@@ -31,7 +31,13 @@ fun TampilSiswa(
         Column(
             modifier = Modifier.padding(isiRuang),
             verticalArrangement = Arrangement.SpaceBetween
-        )
+        ){
+            Column(
+                modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium)),
+                verticalArrangement = Arrangement.spacedBy(space = dimensionResource(R.dimen.padding_small))
+            ){
+
+            }
 
     }
 }
