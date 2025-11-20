@@ -9,7 +9,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectable
+import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
@@ -17,6 +21,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -24,25 +29,22 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import org.jetbrains.annotations.ApiStatus
+import com.sample.prak7.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FormDataDiri(
-    onSubmitClick: () -> Unit = {},
-    modifier: Modifier = Modifier
+fun FormSiswa(
+    onSubmitClick: () -> Unit = {}
 ) {
     var textNama by remember { mutableStateOf(value = "") }
     var textAlamat by remember { mutableStateOf(value = "") }
     var textJK by remember { mutableStateOf(value = "") }
     var textSP by remember { mutableStateOf(value = "") }
 
-    var nama by remember { mutableStateOf(value = "") }
-    var alamat by remember { mutableStateOf(value = "") }
-    var jenis by remember { mutableStateOf(value = "") }
-    var status by remember { mutableStateOf(value = "") }
 
     val gender: List<String> = listOf("Laki-laki", "Perempuan")
     val statusKawin: List<String> = listOf("Janda", "Lajang", "Duda")
@@ -163,19 +165,15 @@ fun FormDataDiri(
                     bottom = dimensionResource(R.dimen.padding_medium),
                     top = dimensionResource(R.dimen.padding_medium)
                 ),
-                thickness = dimensionResource(R.dimen.divider_tipis),
+                thickness = dimensionResource(R.dimen.thicknes_divider),
                 color = Color.DarkGray
             )
 
             Button(
                 modifier = Modifier.fillMaxWidth(fraction = 1f),
-                enabled = textAlamat.isNotEmpty() && textSP.isNotEmpty(),
+                enabled = textNama.isNotEmpty() && textJK.isNotEmpty() && textAlamat.isNotEmpty() && textSP.isNotEmpty(),
                 onClick = {
-                    nama = textNama
                     onSubmitClick()
-                    jenis = textJK
-                    alamat = textAlamat
-                    status = textSP
                 }
             ) {
                 Text(text = stringResource(id = R.string.submit))
@@ -185,10 +183,10 @@ fun FormDataDiri(
                     bottom = dimensionResource(id = R.dimen.padding_medium),
                     top = dimensionResource(id = R.dimen.padding_medium)
                 ),
-                thickness = dimensionResource(id = R.dimen.divider_tipis),
+                thickness = dimensionResource(id = R.dimen.thicknes_divider),
                 color = Color.DarkGray
             )
-            ElevatedCard(
+            Card(
                 elevation = CardDefaults.cardElevation(defaultElevation = 10.dp),
                 colors = CardDefaults.cardColors(containerColor = Color.Black),
                 modifier = Modifier
@@ -198,10 +196,10 @@ fun FormDataDiri(
                 Column(
                     modifier = Modifier.padding(horizontal = 5.dp, vertical = 15.dp)
                 ) {
-                    Text(text = "Nama   : $nama", color = Color.White)
-                    Text(text = "Gender : $jenis", color = Color.White)
-                    Text(text = "Status : $status", color = Color.White)
-                    Text(text = "Alamat : $alamat", color = Color.White)
+                    Text(text = "Nama   : $textNama", color = Color.White)
+                    Text(text = "Gender : $textJK", color = Color.White)
+                    Text(text = "Status : $textSP", color = Color.White)
+                    Text(text = "Alamat : $textAlamat", color = Color.White)
                 }
             }
 
