@@ -164,7 +164,7 @@ fun FormSiswa(
                     bottom = dimensionResource(R.dimen.padding_medium),
                     top = dimensionResource(R.dimen.padding_medium)
                 ),
-                thickness = dimensionResource(R.dimen.thicknes_divider),
+                thickness = dimensionResource(R.dimen.thickness_divider),
                 color = Color.DarkGray
             )
 
@@ -182,7 +182,7 @@ fun FormSiswa(
                     bottom = dimensionResource(id = R.dimen.padding_medium),
                     top = dimensionResource(id = R.dimen.padding_medium)
                 ),
-                thickness = dimensionResource(id = R.dimen.thicknes_divider),
+                thickness = dimensionResource(id = R.dimen.thickness_divider),
                 color = Color.DarkGray
             )
             Card(
